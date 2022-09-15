@@ -3,4 +3,5 @@
     <string name="toRestaurants">To Restaurants</string>
     <string name="menumakerDesc">Menu maker is a quick way to order meals from your favorite local restaurant</string>
     <string name="specials">Specials</string>
+    <string name="checkout">Checkout</string>
 </resources>
