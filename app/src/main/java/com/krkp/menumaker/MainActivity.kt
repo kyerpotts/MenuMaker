@@ -2,10 +2,10 @@ package com.krkp.menumaker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.krkp.menumaker.database.entities.Food
 import com.krkp.menumaker.database.entities.Restaurants
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         val restaurants = Restaurants("Test Restaurant", "123 Fake Street", "Makes food")
         val food = Food("Test Food", "Test Restaurant", "TestImg", 19.99, "Tastes Good")
 
-        GlobalScope.launch(Dispatchers.IO) {
+        lifecycleScope.launch(Dispatchers.IO) {
             dao.insertRestaurant(restaurants)
             dao.insertFood(food)
         }
