@@ -27,8 +27,8 @@ abstract class RestaurantDatabase : RoomDatabase(){
                 return INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     RestaurantDatabase::class.java,
-                    "restaurant_db"
-                ).build().also {
+                    "restaurantDatabase"
+                ).createFromAsset("restaurantDatabase.db").build().also {
                     INSTANCE = it
                 }
             }

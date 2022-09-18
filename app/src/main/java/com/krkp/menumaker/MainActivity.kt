@@ -3,9 +3,6 @@ package com.krkp.menumaker
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.krkp.menumaker.database.entities.Food
-import com.krkp.menumaker.database.entities.Restaurants
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -14,14 +11,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val dao = RestaurantDatabase.getInstance(this).restaurantDao
 
-        // Test data
-        val restaurants = Restaurants("Test Restaurant", "123 Fake Street", "Makes food")
-        val food = Food("Test Food", "Test Restaurant", "TestImg", 19.99, "Tastes Good")
-
-        lifecycleScope.launch(Dispatchers.IO) {
-            dao.insertRestaurant(restaurants)
-            dao.insertFood(food)
+        // needs action to put it into memory
+        lifecycleScope.launch {
+            dao.getRestaurants()
         }
-
     }
 }

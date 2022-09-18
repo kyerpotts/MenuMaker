@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class Restaurants (
     @PrimaryKey(autoGenerate = false) val restaurantName: String,
     val address: String,
+    val logo: String,
     val bio: String
     )
