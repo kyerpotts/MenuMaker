@@ -35,3 +35,5 @@ abstract class RestaurantDatabase : RoomDatabase(){
         }
     }
 }
+
+//.createFromAsset("restaurantDatabase.db")

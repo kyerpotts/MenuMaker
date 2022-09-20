@@ -4,4 +4,8 @@
     <string name="menumakerDesc">Menu maker is a quick way to order meals from your favorite local restaurant</string>
     <string name="specials">Specials</string>
     <string name="checkout">Checkout</string>
+    <string name="food_image">Food Image</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="food">Food</string>
+    <string name="price">Price</string>
 </resources>

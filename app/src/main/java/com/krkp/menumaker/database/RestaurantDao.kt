@@ -5,7 +5,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.krkp.menumaker.database.entities.Food
+import com.krkp.menumaker.database.entities.Orders
 import com.krkp.menumaker.database.entities.Restaurants
+import com.krkp.menumaker.database.entities.Users
 
 @Dao
 interface RestaurantDao {
@@ -24,4 +26,8 @@ interface RestaurantDao {
 
     @Query("SELECT * FROM Food WHERE restaurantName = :restaurant")
     suspend fun getRestaurantMenu(restaurant: String): List<Food>
+
+    @Query("SELECT * FROM Food ORDER BY RANDOM() LIMIT 10")
+    suspend fun getSpecials(): List<Food>
+
 }
