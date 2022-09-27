@@ -1,5 +1,6 @@
 package com.krkp.menumaker.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -28,6 +29,6 @@ interface RestaurantDao {
     suspend fun getRestaurantMenu(restaurant: String): List<Food>
 
     @Query("SELECT * FROM Food ORDER BY RANDOM() LIMIT 10")
-    suspend fun getSpecials(): List<Food>
+    fun getSpecials(): LiveData<List<Food>>
 
 }

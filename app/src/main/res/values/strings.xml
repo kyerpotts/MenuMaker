@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">MenuMaker</string>
-    <string name="toRestaurants">To Restaurants</string>
     <string name="menumakerDesc">Menu maker is a quick way to order meals from your favorite local restaurant</string>
     <string name="specials">Specials</string>
     <string name="checkout">Checkout</string>
     <string name="food_image">Food Image</string>
-    <string name="restaurant">Restaurant</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="restaurant">Restaurants</string>
     <string name="food">Food</string>
     <string name="price">Price</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="go_to_cart">Go To Cart</string>
+    <string name="cart">Cart</string>
+    <string name="menu">Menu</string>
 </resources>

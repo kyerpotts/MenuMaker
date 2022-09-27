@@ -1,10 +1,9 @@
-package com.krkp.menumaker
+package com.krkp.menumaker.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.krkp.menumaker.database.UserDao
 import com.krkp.menumaker.database.entities.Users
 import com.krkp.menumaker.database.entities.Orders
 
@@ -22,7 +21,7 @@ abstract class UserDatabase : RoomDatabase(){
         @Volatile
         private var INSTANCE: UserDatabase? = null
 
-        fun getInstance(context: Context): UserDatabase{
+        fun getInstance(context: Context): UserDatabase {
             synchronized(this){
                 return INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,

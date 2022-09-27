@@ -1,10 +1,9 @@
-package com.krkp.menumaker
+package com.krkp.menumaker.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.krkp.menumaker.database.RestaurantDao
 import com.krkp.menumaker.database.entities.Restaurants
 import com.krkp.menumaker.database.entities.Food
 
@@ -22,7 +21,7 @@ abstract class RestaurantDatabase : RoomDatabase(){
         @Volatile
         private var INSTANCE: RestaurantDatabase? = null
 
-        fun getInstance(context: Context): RestaurantDatabase{
+        fun getInstance(context: Context): RestaurantDatabase {
             synchronized(this){
                 return INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
