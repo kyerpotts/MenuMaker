@@ -1,4 +1,4 @@
-package com.krkp.menumaker.database
+package com.krkp.menumaker.database.userdb
 
 import android.content.Context
 import androidx.room.Database

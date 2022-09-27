@@ -1,4 +1,4 @@
-package com.krkp.menumaker.database
+package com.krkp.menumaker.database.restaurantdb
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

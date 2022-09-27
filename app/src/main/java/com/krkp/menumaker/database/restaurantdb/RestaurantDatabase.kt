@@ -1,4 +1,4 @@
-package com.krkp.menumaker.database
+package com.krkp.menumaker.database.restaurantdb
 
 import android.content.Context
 import androidx.room.Database
@@ -14,15 +14,15 @@ import com.krkp.menumaker.database.entities.Food
     ],
     version = 1
 )
-abstract class RestaurantDatabase : RoomDatabase(){
+abstract class RestaurantDatabase : RoomDatabase() {
     abstract val restaurantDao: RestaurantDao
 
-    companion object{
+    companion object {
         @Volatile
         private var INSTANCE: RestaurantDatabase? = null
 
         fun getInstance(context: Context): RestaurantDatabase {
-            synchronized(this){
+            synchronized(this) {
                 return INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     RestaurantDatabase::class.java,
