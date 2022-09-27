@@ -12,4 +12,8 @@
     <string name="go_to_cart">Go To Cart</string>
     <string name="cart">Cart</string>
     <string name="menu">Menu</string>
+    <string name="increase_food_items">Increase number of food items to be added to cart</string>
+    <string name="decrease_food_items">Decrease number of food items to add to cart</string>
+    <string name="_0">0</string>
+    <string name="add">Add</string>
 </resources>

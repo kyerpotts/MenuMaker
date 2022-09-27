@@ -11,17 +11,17 @@ import com.krkp.menumaker.database.restaurantdb.RestaurantRepository
  * Utilizes the Singleton pattern to provide a single instance of a repository designed to wrap
  * around database interactions to provide a clean API to [ViewModel] components.
  */
-class CartRepository private constructor(cartDao: CartDao) {
+class CartRepository private constructor(private val cartDao: CartDao) {
     companion object {
         @Volatile
         private lateinit var INSTANCE: CartRepository
 
         /**
-         * Returns a threadsafe singleton instance of a Restaurant Repository
+         * Returns a threadsafe singleton instance of a Cart Repository
          */
         fun getInstance(cartDao: CartDao): CartRepository {
             synchronized(this) {
-                if(!::INSTANCE.isInitialized) {
+                if (!::INSTANCE.isInitialized) {
                     INSTANCE = CartRepository(cartDao)
                 }
                 return INSTANCE
@@ -29,5 +29,11 @@ class CartRepository private constructor(cartDao: CartDao) {
         }
     }
 
+    // LiveData objects to be utilised in ViewModels
     val readCart: LiveData<List<OrderItem>> = cartDao.getCart()
+
+    suspend fun addOrderItem(orderItem: OrderItem) {
+        cartDao.insertOrderItem(orderItem)
+    }
+
 }

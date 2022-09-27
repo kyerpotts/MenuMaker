@@ -20,13 +20,13 @@ interface RestaurantDao {
     suspend fun insertFood(food: Food)
 
     @Query("SELECT * FROM Restaurants")
-    suspend fun getRestaurants(): List<Restaurants>
+    fun getRestaurants(): LiveData<List<Restaurants>>
 
     @Query("SELECT * FROM Food")
     suspend fun getFood(): List<Food>
 
     @Query("SELECT * FROM Food WHERE restaurantName = :restaurant")
-    suspend fun getRestaurantMenu(restaurant: String): List<Food>
+    fun getRestaurantMenu(restaurant: String): LiveData<List<Food>>
 
     @Query("SELECT * FROM Food ORDER BY RANDOM() LIMIT 10")
     fun getSpecials(): LiveData<List<Food>>
