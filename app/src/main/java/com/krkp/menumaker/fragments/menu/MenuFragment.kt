@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.krkp.menumaker.R
+import com.krkp.menumaker.fragments.specials.SpecialsAdapter
 import kotlinx.android.synthetic.main.fragment_menu.view.*
 
 /**
@@ -31,7 +32,9 @@ class MenuFragment : Fragment() {
 
 
         // RecyclerView set up
-        val adapter = MenuAdapter()
+        val adapter = MenuAdapter(MenuAdapter.OnClickListener { orderItem ->
+            menuViewModel.addToCart(orderItem)
+        })
         val recyclerView = view.rvMenu
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

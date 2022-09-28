@@ -29,7 +29,9 @@ class SpecialsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_specials, container, false)
 
         // RecyclerView set up
-        val adapter = SpecialsAdapter()
+        val adapter = SpecialsAdapter(SpecialsAdapter.OnClickListener { orderItem ->
+            specialsViewModel.addToCart(orderItem)
+        })
         val recyclerView = view.rvSpecials
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())

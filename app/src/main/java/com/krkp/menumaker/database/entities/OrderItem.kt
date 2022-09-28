@@ -5,9 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class OrderItem(
-    @PrimaryKey(autoGenerate = false) val orderItemId: Int,
+    @PrimaryKey(autoGenerate = false) val foodName: String,
     val numItems: Int,
-    val foodName: String,
     val restaurantName: String,
     val imgRef: String,
     val price: Double,

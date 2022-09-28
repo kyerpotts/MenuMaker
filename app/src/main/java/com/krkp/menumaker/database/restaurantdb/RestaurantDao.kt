@@ -1,11 +1,7 @@
 package com.krkp.menumaker.database.restaurantdb
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.krkp.menumaker.database.entities.Food
 import com.krkp.menumaker.database.entities.Orders
 import com.krkp.menumaker.database.entities.Restaurants
@@ -31,5 +27,8 @@ interface RestaurantDao {
 
     @Query("SELECT * FROM Food ORDER BY RANDOM() LIMIT 10")
     fun getSpecials(): LiveData<List<Food>>
+
+    @Query("DELETE FROM restaurants WHERE restaurantName = :restaurant")
+    suspend fun deleteRestaurant(restaurant: String)
 
 }

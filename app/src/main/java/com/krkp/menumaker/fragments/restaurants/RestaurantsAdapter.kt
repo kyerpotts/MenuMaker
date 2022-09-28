@@ -17,7 +17,6 @@ class RestaurantsAdapter : RecyclerView.Adapter<RestaurantsAdapter.RestaurantIte
     private var restaurantsList = emptyList<Restaurants>()
 
     class RestaurantItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantItemViewHolder {

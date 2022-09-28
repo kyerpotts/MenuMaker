@@ -6,20 +6,52 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.imageview.ShapeableImageView
 import com.krkp.menumaker.R
 import com.krkp.menumaker.database.entities.Food
+import com.krkp.menumaker.database.entities.OrderItem
 import kotlinx.android.synthetic.main.food_item_row.view.*
 
-//
-class SpecialsAdapter : RecyclerView.Adapter<SpecialsAdapter.FoodItemViewHolder>() {
+// Adapter for the recyclerview in the Specials Fragment
+class SpecialsAdapter(val onClickListener: OnClickListener) :
+    RecyclerView.Adapter<SpecialsAdapter.FoodItemViewHolder>() {
     private var specialsList = emptyList<Food>()
 
-    class FoodItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    // FoodItemViewHolder initialises the onClickListeners to allow the adapter to retrieve information
+    inner class FoodItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.btnDecreaseValue.setOnClickListener {
+                var numItems: Int = itemView.tvNumItems.text.toString().toInt()
+                if (numItems > 0) {
+                    numItems--
+                    itemView.tvNumItems.text = numItems.toString()
+                }
+            }
+            itemView.btnIncreaseValue.setOnClickListener {
+                var numItems: Int = itemView.tvNumItems.text.toString().toInt()
+                numItems++
+                itemView.tvNumItems.text = numItems.toString()
+            }
 
+            itemView.btnAddToCart.setOnClickListener {
+                // Retrieve food item and convert to order to be inserted to Cart Database
+                val foodItem = specialsList[adapterPosition]
+                val orderItem = OrderItem(
+                    foodItem.foodName,
+                    itemView.tvNumItems.text.toString().toInt(),
+                    foodItem.restaurantName,
+                    foodItem.imgRef,
+                    foodItem.price,
+                    foodItem.description
+                )
+
+                onClickListener.onClick(orderItem)
+            }
+        }
+    }
+
+    class OnClickListener(val clickListener: (orderItem: OrderItem) -> Unit) {
+        fun onClick(orderItem: OrderItem) = clickListener(orderItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodItemViewHolder {
@@ -41,6 +73,7 @@ class SpecialsAdapter : RecyclerView.Adapter<SpecialsAdapter.FoodItemViewHolder>
             append(currentItem.price)
         }
         holder.itemView.ivFoodImage.setImageResource(id)
+        holder.itemView.tvNumItems.text = "0"
     }
 
     override fun getItemCount(): Int {
@@ -51,4 +84,5 @@ class SpecialsAdapter : RecyclerView.Adapter<SpecialsAdapter.FoodItemViewHolder>
         this.specialsList = specials
         notifyDataSetChanged()
     }
+
 }

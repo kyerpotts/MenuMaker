@@ -36,4 +36,12 @@ class CartRepository private constructor(private val cartDao: CartDao) {
         cartDao.insertOrderItem(orderItem)
     }
 
+    suspend fun removeOrderItem(orderItem: OrderItem) {
+        cartDao.deleteOrderItem(orderItem)
+    }
+
+    suspend fun updateOrderItem(orderItem: OrderItem) {
+        cartDao.updateOrderItem(orderItem)
+    }
+
 }

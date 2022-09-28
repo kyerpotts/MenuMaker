@@ -42,8 +42,6 @@ class RestaurantsFragment : Fragment() {
             adapter.setData(restaurants)
         })
 
-        restaurantsViewModel.insertRestaurant(Restaurants("Bubba Gump", "129 West 81st Street", "bubbagump", "Not Just Gumbo"))
-
         // Navigate to Cart Fragment
         view.btnToCart.setOnClickListener {
             findNavController().navigate(R.id.action_restaurantsFragment_to_cartFragment)

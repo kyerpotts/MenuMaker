@@ -9,13 +9,45 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.krkp.menumaker.R
 import com.krkp.menumaker.database.entities.Food
+import com.krkp.menumaker.database.entities.OrderItem
 import kotlinx.android.synthetic.main.food_item_row.view.*
 
-class MenuAdapter : RecyclerView.Adapter<MenuAdapter.MenuItemViewHolder>() {
+class MenuAdapter(val onClickListener: OnClickListener) : RecyclerView.Adapter<MenuAdapter.MenuItemViewHolder>() {
     private var menuList = emptyList<Food>()
 
-    class MenuItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MenuItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.btnDecreaseValue.setOnClickListener {
+                var numItems: Int = itemView.tvNumItems.text.toString().toInt()
+                if (numItems > 0) {
+                    numItems--
+                    itemView.tvNumItems.text = numItems.toString()
+                }
+            }
+            itemView.btnIncreaseValue.setOnClickListener {
+                var numItems: Int = itemView.tvNumItems.text.toString().toInt()
+                numItems++
+                itemView.tvNumItems.text = numItems.toString()
+            }
 
+            itemView.btnAddToCart.setOnClickListener {
+                // Retrieve food item and convert to order to be inserted to Cart Database
+                val foodItem = menuList[adapterPosition]
+                val orderItem = OrderItem(
+                    foodItem.foodName,
+                    itemView.tvNumItems.text.toString().toInt(),
+                    foodItem.restaurantName,
+                    foodItem.imgRef,
+                    foodItem.price,
+                    foodItem.description
+                )
+                onClickListener.onClick(orderItem)
+            }
+        }
+    }
+
+    class OnClickListener(val clickListener: (orderItem: OrderItem) -> Unit) {
+        fun onClick(orderItem: OrderItem) = clickListener(orderItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuItemViewHolder {

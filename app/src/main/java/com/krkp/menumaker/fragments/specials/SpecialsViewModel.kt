@@ -33,12 +33,25 @@ class SpecialsViewModel(application: Application) : AndroidViewModel(application
     // Function adds items selected from the Specials Recycler View to the cart database. Cart database then retrieves the items to populate it's recyclerView
     fun addToCart(orderItem: OrderItem) {
         viewModelScope.launch(Dispatchers.IO) {
-            cartRepo.addOrderItem(orderItem)
+            if (orderItem.numItems < 1) {
+                val newOrderItem = OrderItem(
+                    orderItem.foodName,
+                    1,
+                    orderItem.restaurantName,
+                    orderItem.imgRef,
+                    orderItem.price,
+                    orderItem.description
+                )
+                cartRepo.addOrderItem(newOrderItem)
+            }
+            else {
+                cartRepo.addOrderItem(orderItem)
+            }
         }
     }
 
     // Function retrieves Specials data
-    fun retrieveSpecialsData() : LiveData<List<Food>> {
+    fun retrieveSpecialsData(): LiveData<List<Food>> {
         return this.readSpecialsData
     }
 }

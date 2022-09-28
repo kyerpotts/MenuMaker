@@ -39,4 +39,8 @@ class RestaurantRepository private constructor(private val resDao: RestaurantDao
     suspend fun insertRestaurant(restaurants: Restaurants) {
         resDao.insertRestaurant(restaurants)
     }
+
+    suspend fun deleteRestaurant(restaurant: String) {
+        resDao.deleteRestaurant(restaurant)
+    }
 }

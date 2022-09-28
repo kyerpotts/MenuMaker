@@ -37,16 +37,21 @@ class RestaurantsViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     // Function retrieves Restaurants data
-    fun retrieveRestaurantsData() : LiveData<List<Restaurants>> {
+    fun retrieveRestaurantsData(): LiveData<List<Restaurants>> {
         return this.readRestaurantsData
     }
 
-    // Function updates Restaurants data
+    // Function inserts Restaurants data
     fun insertRestaurant(restaurants: Restaurants) {
         viewModelScope.launch(Dispatchers.IO) {
             resRepo.insertRestaurant(restaurants)
         }
+    }
 
+    fun deleteRestaurant(restaurant: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            resRepo.deleteRestaurant(restaurant)
+        }
     }
 
 }
