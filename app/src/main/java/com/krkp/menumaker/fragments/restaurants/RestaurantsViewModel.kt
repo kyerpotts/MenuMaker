@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.krkp.menumaker.database.cartdb.CartDatabase
 import com.krkp.menumaker.database.cartdb.CartRepository
-import com.krkp.menumaker.database.entities.Food
 import com.krkp.menumaker.database.entities.OrderItem
 import com.krkp.menumaker.database.entities.Restaurants
 import com.krkp.menumaker.database.restaurantdb.RestaurantDatabase
@@ -36,4 +35,18 @@ class RestaurantsViewModel(application: Application) : AndroidViewModel(applicat
             cartRepo.addOrderItem(orderItem)
         }
     }
+
+    // Function retrieves Restaurants data
+    fun retrieveRestaurantsData() : LiveData<List<Restaurants>> {
+        return this.readRestaurantsData
+    }
+
+    // Function updates Restaurants data
+    fun insertRestaurant(restaurants: Restaurants) {
+        viewModelScope.launch(Dispatchers.IO) {
+            resRepo.insertRestaurant(restaurants)
+        }
+
+    }
+
 }

@@ -35,4 +35,8 @@ class RestaurantRepository private constructor(private val resDao: RestaurantDao
     fun retrieveMenuFrom(restaurantName: String) : LiveData<List<Food>> {
         return resDao.getRestaurantMenu(restaurantName)
     }
+
+    suspend fun insertRestaurant(restaurants: Restaurants) {
+        resDao.insertRestaurant(restaurants)
+    }
 }

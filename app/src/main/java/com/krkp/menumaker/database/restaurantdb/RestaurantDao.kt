@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.krkp.menumaker.database.entities.Food
 import com.krkp.menumaker.database.entities.Orders
 import com.krkp.menumaker.database.entities.Restaurants

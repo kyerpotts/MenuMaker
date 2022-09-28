@@ -19,14 +19,13 @@ class MenuViewModel(application: Application): AndroidViewModel(application) {
     private val cartRepo: CartRepository
 
     // Provides LiveData retrieved from the database to be used in the RecyclerView
-    private val readMenuData: LiveData<List<Food>>
+//    private lateinit var readMenuData: LiveData<List<Food>> TODO: Possibly not needed
 
     init {
         val resDao = RestaurantDatabase.getInstance(application).restaurantDao
         val cartDao = CartDatabase.getInstance(application).cartDao
         resRepo = RestaurantRepository.getInstance(resDao)
         cartRepo = CartRepository.getInstance(cartDao)
-        readMenuData = resRepo.retrieveMenuFrom("TODO: Restaurant name must be retrieved from RecyclerViewHolder OnClick")
     }
 
     // Function adds items selected from the Specials Recycler View to the cart database. Cart database then retrieves the items to populate it's recyclerView
@@ -34,5 +33,10 @@ class MenuViewModel(application: Application): AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             cartRepo.addOrderItem(orderItem)
         }
+    }
+
+    // Function retrieves Menu data
+    fun retrieveMenuData(menu: String) : LiveData<List<Food>> {
+        return resRepo.retrieveMenuFrom(menu)
     }
 }

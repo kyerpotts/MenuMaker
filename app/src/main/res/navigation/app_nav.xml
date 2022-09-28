@@ -55,5 +55,8 @@
         <action
             android:id="@+id/action_menuFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <argument
+            android:name="currentRestaurant"
+            app:argType="string" />
     </fragment>
 </navigation>
