@@ -28,10 +28,10 @@ abstract class UserDatabase : RoomDatabase(){
                     UserDatabase::class.java,
                     "userDatabase"
                 ).
-                fallbackToDestructiveMigration().build().also {
-                    INSTANCE = it
-//                createFromAsset("userDatabase.db").build().also {
+//                fallbackToDestructiveMigration().build().also {
 //                    INSTANCE = it
+                createFromAsset("userDatabase.db").build().also {
+                    INSTANCE = it
                 }
             }
         }

@@ -29,12 +29,6 @@ class RestaurantsViewModel(application: Application) : AndroidViewModel(applicat
         readRestaurantsData = resRepo.readRestaurants
     }
 
-    // Function adds items selected from the Specials Recycler View to the cart database. Cart database then retrieves the items to populate it's recyclerView
-    fun addToCart(orderItem: OrderItem) {
-        viewModelScope.launch(Dispatchers.IO) {
-            cartRepo.addOrderItem(orderItem)
-        }
-    }
 
     // Function retrieves Restaurants data
     fun retrieveRestaurantsData(): LiveData<List<Restaurants>> {
@@ -48,6 +42,7 @@ class RestaurantsViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
+    // Function deletes Restaurants data
     fun deleteRestaurant(restaurant: String) {
         viewModelScope.launch(Dispatchers.IO) {
             resRepo.deleteRestaurant(restaurant)
