@@ -9,6 +9,7 @@ import com.krkp.menumaker.database.cartdb.CartDatabase
 import com.krkp.menumaker.database.cartdb.CartRepository
 import com.krkp.menumaker.database.entities.Food
 import com.krkp.menumaker.database.entities.OrderItem
+import com.krkp.menumaker.database.entities.Orders
 import com.krkp.menumaker.database.restaurantdb.RestaurantRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -59,5 +60,15 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
             removeFromCart(orderItem)
         }
     }
+
+//    fun convertToOrder(orderItems: List<OrderItem>): Orders {
+//        var orderString: String
+//        for (i in orderItems) {
+//          orderString = i.numItems.toString() + " " +
+//        }
+//        val order: Orders = Orders(0, orderItems[0].)
+//
+//        return order
+//    }
 
 }

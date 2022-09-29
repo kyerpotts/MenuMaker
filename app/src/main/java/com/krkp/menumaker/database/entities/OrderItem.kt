@@ -1,8 +1,11 @@
 package com.krkp.menumaker.database.entities
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity
 data class OrderItem(
     @PrimaryKey(autoGenerate = false) val foodName: String,
@@ -11,4 +14,4 @@ data class OrderItem(
     val imgRef: String,
     val price: Double,
     val description: String
-)
+) : Parcelable

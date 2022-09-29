@@ -1,5 +1,7 @@
 package com.krkp.menumaker.database.userdb
 
+import androidx.lifecycle.LiveData
+import com.krkp.menumaker.database.entities.Users
 import com.krkp.menumaker.database.restaurantdb.RestaurantDao
 import com.krkp.menumaker.database.restaurantdb.RestaurantRepository
 
@@ -25,5 +27,15 @@ class UserRepository private constructor(private val userDao: UserDao) {
                 return INSTANCE
             }
         }
+    }
+
+    // Function to retrieve userData
+    fun retrieveUserFrom(username: String) : LiveData<Users> {
+        return userDao.getUser(username)
+    }
+
+    // Function to add userData
+    suspend fun addUser(user: Users) {
+        userDao.insertUser(user)
     }
 }

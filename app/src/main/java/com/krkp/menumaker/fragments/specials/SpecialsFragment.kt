@@ -20,7 +20,9 @@ import kotlinx.android.synthetic.main.fragment_specials.view.*
  * create an instance of this fragment.
  */
 class SpecialsFragment : Fragment() {
+
     private lateinit var specialsViewModel: SpecialsViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

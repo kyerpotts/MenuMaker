@@ -1,5 +1,7 @@
 package com.krkp.menumaker.database.userdb
 
+import androidx.annotation.Nullable
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -20,9 +22,9 @@ interface UserDao {
     suspend fun getAllUsers(): List<Users>
 
     @Query("SELECT * FROM Users WHERE username = :username")
-    suspend fun getUser(username: String): List<Users>
+    fun getUser(username: String): LiveData<Users>
 
     @Query("SELECT * FROM Orders WHERE username = :username")
-    suspend fun getOrders(username: String): List<Orders>
+    fun getOrders(username: String): LiveData<List<Orders>>
 
 }
