@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     // Login details
-    var loggedIn: Boolean = false
+    private var loggedIn: Boolean = false
     var user: Users? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,9 +21,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun isLoggedIn() : Boolean {
-        if(user != null) {
+        loggedIn = if(user != null) {
             Log.i("Checking Login", "User has successfully logged in")
-            loggedIn = true
+            true
+        } else {
+            false
         }
         return loggedIn
     }

@@ -36,7 +36,7 @@ class RestaurantsFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        //ViewModel set up
+        // ViewModel set up
         restaurantsViewModel = ViewModelProvider(this).get(RestaurantsViewModel::class.java)
         restaurantsViewModel.retrieveRestaurantsData().observe(viewLifecycleOwner, Observer { restaurants ->
             adapter.setData(restaurants)

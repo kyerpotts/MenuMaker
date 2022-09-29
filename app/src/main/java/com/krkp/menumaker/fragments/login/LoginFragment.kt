@@ -9,15 +9,14 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.krkp.menumaker.MainActivity
 import com.krkp.menumaker.R
 import com.krkp.menumaker.database.entities.Users
+import com.krkp.menumaker.fragments.cart.CartFragmentDirections
+import com.krkp.menumaker.fragments.menu.MenuFragmentArgs
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +25,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class LoginFragment : Fragment() {
 
+    private val args by navArgs<LoginFragmentArgs>()
     private lateinit var loginViewModel: LoginViewModel
 
     private lateinit var mainActivity: MainActivity
@@ -67,7 +67,9 @@ class LoginFragment : Fragment() {
                                 "Login successful",
                                 Toast.LENGTH_LONG
                             ).show()
-                            findNavController().navigate(R.id.action_loginFragment_to_ordersFragment)
+                            val action =
+                                LoginFragmentDirections.actionLoginFragmentToOrdersFragment(args.orderList)
+                            findNavController().navigate(action)
                         }
                     })
             }

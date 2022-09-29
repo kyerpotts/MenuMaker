@@ -30,7 +30,6 @@ class MenuFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
 
-
         // RecyclerView set up
         val adapter = MenuAdapter(MenuAdapter.OnClickListener { orderItem ->
             menuViewModel.addToCart(orderItem)

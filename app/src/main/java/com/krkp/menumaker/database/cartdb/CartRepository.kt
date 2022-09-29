@@ -44,4 +44,8 @@ class CartRepository private constructor(private val cartDao: CartDao) {
         cartDao.updateOrderItem(orderItem)
     }
 
+    suspend fun clearAllFromCart() {
+        cartDao.clearCart()
+    }
+
 }

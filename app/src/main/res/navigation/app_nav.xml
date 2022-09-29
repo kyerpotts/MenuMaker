@@ -88,5 +88,8 @@
         <argument
             android:name="orderList"
             app:argType="com.krkp.menumaker.database.entities.OrderItem[]" />
+        <action
+            android:id="@+id/action_ordersFragment_to_specialsFragment"
+            app:destination="@id/specialsFragment" />
     </fragment>
 </navigation>
