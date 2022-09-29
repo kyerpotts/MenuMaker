@@ -25,4 +25,6 @@
     <string name="logout">Logout</string>
     <string name="order_id">Order ID</string>
     <string name="date_time">Date/Time</string>
+    <string name="total">Total</string>
+    <string name="order_history">Order History</string>
 </resources>

@@ -56,27 +56,29 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun dispatchOrder(username: String, orderList: Array<OrderItem>) {
-        viewModelScope.launch(Dispatchers.IO) {
-            var totalPrice: Double = 0.0
-            var orderString: String
-            val newOrder : Orders
-            for (i in orderList) {
-                orderString = buildString {
-                    append(i.numItems)
-                    append(" ")
-                    append(i.restaurantName)
-                    append(" - ")
-                    append(i.foodName)
-                    append(" : ")
-                    append("$")
-                    append(i.price)
-                    append("\n")
+        if (orderList.isNotEmpty()) {
+            viewModelScope.launch(Dispatchers.IO) {
+                var totalPrice: Double = 0.0
+                var orderString: String = ""
+                for (i in orderList) {
+                    orderString += buildString {
+                        append(i.numItems)
+                        append("   ")
+                        append(i.restaurantName)
+                        append(" - ")
+                        append(i.foodName)
+                        append(" : ")
+                        append("$")
+                        append(String.format("%.2f", i.price))
+                        append("\n")
+                    }
+                    totalPrice += i.price
                 }
-                totalPrice += i.price
+                val newOrder =
+                    Orders(0, LocalDateTime.now().toString(), username, orderString, totalPrice)
+                userRepo.sendOrder(newOrder)
+                cartRepo.clearAllFromCart()
             }
-            newOrder = Orders(0, LocalDateTime.now().toString())
-            userRepo.sendOrder(newOrder)
-            cartRepo.clearAllFromCart()
         }
     }
 }

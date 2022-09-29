@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.krkp.menumaker.MainActivity
 import com.krkp.menumaker.R
+import com.krkp.menumaker.database.entities.OrderItem
 import kotlinx.android.synthetic.main.fragment_orders.view.*
 
 
@@ -49,12 +50,14 @@ class OrdersFragment : Fragment() {
         }
 
         // Submit cart contents as an order and clear cart
-        mainActivity.user?.username?.let {
-            loginViewModel.dispatchOrder(it, args.orderList)
+        if (args.orderList.isNotEmpty()) {
+            mainActivity.user?.username?.let {
+                loginViewModel.dispatchOrder(it, args.orderList)
+            }
         }
 
         // Navigate to Restaurants Fragment
-        view.btnToRestaurants.setOnClickListener{
+        view.btnToRestaurants.setOnClickListener {
             findNavController().navigate(R.id.action_ordersFragment_to_restaurantsFragment)
         }
 

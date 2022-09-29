@@ -3,11 +3,13 @@ package com.krkp.menumaker.fragments.login
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.krkp.menumaker.R
 import com.krkp.menumaker.database.entities.OrderItem
 import com.krkp.menumaker.database.entities.Orders
 import com.krkp.menumaker.fragments.menu.MenuAdapter
+import com.krkp.menumaker.fragments.restaurants.RestaurantsFragmentDirections
 import kotlinx.android.synthetic.main.order_row.view.*
 
 class OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrderItemViewHolder>() {
@@ -33,7 +35,12 @@ class OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrderItemViewHolder>() 
         holder.itemView.tvDateTime.text = currentItem.dateTime
         holder.itemView.tvPrice.text = buildString {
             append("$")
-            append(currentItem.total.toString())
+            append(String.format("%.2f", currentItem.total))
+        }
+
+        holder.itemView.btnOrderSelect.setOnClickListener {
+            val action = OrdersFragmentDirections.actionOrdersFragmentToSingleOrderFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
         }
     }
 

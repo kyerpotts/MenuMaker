@@ -91,5 +91,20 @@
         <action
             android:id="@+id/action_ordersFragment_to_specialsFragment"
             app:destination="@id/specialsFragment" />
+        <action
+            android:id="@+id/action_ordersFragment_to_singleOrderFragment"
+            app:destination="@id/singleOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleOrderFragment"
+        android:name="com.krkp.menumaker.fragments.login.SingleOrderFragment"
+        android:label="fragment_single_order"
+        tools:layout="@layout/fragment_single_order" >
+        <argument
+            android:name="singleOrder"
+            app:argType="com.krkp.menumaker.database.entities.Orders" />
+        <action
+            android:id="@+id/action_singleOrderFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
     </fragment>
 </navigation>

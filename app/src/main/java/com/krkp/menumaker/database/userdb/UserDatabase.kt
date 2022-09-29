@@ -12,7 +12,7 @@ import com.krkp.menumaker.database.entities.Orders
         Users::class,
         Orders::class
     ],
-    version = 3
+    version = 4
 )
 abstract class UserDatabase : RoomDatabase(){
     abstract val userDao: UserDao
@@ -28,10 +28,10 @@ abstract class UserDatabase : RoomDatabase(){
                     UserDatabase::class.java,
                     "userDatabase"
                 ).
-//                fallbackToDestructiveMigration().build().also {
-//                    INSTANCE = it
-                createFromAsset("userDatabase.db").build().also {
+                fallbackToDestructiveMigration().build().also {
                     INSTANCE = it
+//                createFromAsset("userDatabase.db").build().also {
+//                    INSTANCE = it
                 }
             }
         }

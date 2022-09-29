@@ -44,4 +44,9 @@ class UserRepository private constructor(private val userDao: UserDao) {
     suspend fun addUser(user: Users) {
         userDao.insertUser(user)
     }
+
+    // Function to send an order
+    suspend fun sendOrder(order: Orders) {
+       userDao.insertOrder(order)
+    }
 }

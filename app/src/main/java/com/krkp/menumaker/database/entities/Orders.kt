@@ -12,5 +12,5 @@ data class Orders (
     val dateTime: String,
     val username: String,
     val order: String,
-    val total: Int
+    val total: Double
 ): Parcelable
