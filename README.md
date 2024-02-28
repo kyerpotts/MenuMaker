@@ -1,27 +1,5 @@
 # MenuMaker
 
-This is just a quick doc to keep track of any ref stuff we may need
-
-Actionbar removed in res/values/theme - Done for a cleaner look
-
-## MainActivity
-
-This has a recycler build straight in. This is to have a simple point to setup and check communication with the database and app is functioning. It will have its own item layout thats focused on just showing the special menu items but not the ordering. This is purely to keep a part of the app simple. This activity also has the only tablet mode where it changes the arrangement slightly.
-
-## MenuActivity
-
-Has most the functionality. Has one framelayout. The intention is to have a restaurant fragment then select to change to menu fragment for that restaurant. Checkout button is
-
-## Checkout
-
-Has the checkout features
-
-## Database
-
-Database is using the Room api. This is just another level of abstraction to the SQLite and is the current recommended way to implement databases in Android development. There are two main tables, One for Restaurants and one for food as well as a table for the combinations of these. The reason for doing this was to allow for a maintainable database. If a restaurant was to leave the service changing their service would be easier. In the Food table the images are only ref by String, This is to meet Assignment specs but ideally we would want the image in the database (probably harder than its worth).
-
-Database is in its own package as well as smaller packages for its parts. This is to setup a good foundation for expansion. The RestaurantDoa is used to do actions to the database. Its effectively a combination of all the auxillary classes required to do the same operations in a pure SQLite system.
-
 ## Image Refs
 
 ### Logo
@@ -92,4 +70,3 @@ Database is in its own package as well as smaller packages for its parts. This i
 <https://www.pexels.com/photo/close-up-photo-of-fried-chicken-60616/>
 <https://www.pexels.com/photo/vegetable-salad-on-ceramic-plate-551997/>
 <https://www.pexels.com/photo/vegetable-salad-with-wheat-bread-on-the-side-1213710/>
-# MenuMaker
