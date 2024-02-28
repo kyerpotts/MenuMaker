@@ -92,3 +92,4 @@ Database is in its own package as well as smaller packages for its parts. This i
 <https://www.pexels.com/photo/close-up-photo-of-fried-chicken-60616/>
 <https://www.pexels.com/photo/vegetable-salad-on-ceramic-plate-551997/>
 <https://www.pexels.com/photo/vegetable-salad-with-wheat-bread-on-the-side-1213710/>
+# MenuMaker
